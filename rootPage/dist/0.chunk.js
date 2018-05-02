@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{46:function(o,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.DummyClass=void 0;var t=function(){function o(){}return o.prototype.sayHello=function(){return"hello"},o.prototype.sayBye=function(){return"good bye"},o}();e.DummyClass=t}}]);
+//# sourceMappingURL=0.chunk.js.map
