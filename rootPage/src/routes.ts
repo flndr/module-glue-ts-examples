@@ -2,6 +2,7 @@ import createRouter, { DoneFn } from 'router5';
 import browserPlugin from 'router5/plugins/browser';
 import listenersPlugin from 'router5/plugins/listeners';
 import { Route, Router, State } from 'router5/create-router';
+import { SubscribeState } from 'router5/core/observable';
 
 class Routes {
     public HOME : Route     = { name : 'home', path : '/' };
@@ -15,7 +16,10 @@ const routes = new Routes();
 const router : Router = createRouter( Object.values( routes ) );
 router.usePlugin( browserPlugin( { useHash : true } ) );
 router.usePlugin( listenersPlugin() );
-router.start( routes.HOME.name );
+
+function start() {
+    router.start( routes.HOME.name );
+}
 
 function navigate( r : Route, params ? : any ) {
     router.navigate( r.name, params );
@@ -36,8 +40,13 @@ const testMiddleware = () => ( toState : State, {}, done : DoneFn ) => {
 
 router.useMiddleware( testMiddleware );
 
+router.subscribe( ( state : SubscribeState ) => {
+    console.log( 'router.subscribe', state );
+} );
+
 export {
     router,
     routes,
-    navigate
+    navigate,
+    start
 };
