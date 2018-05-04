@@ -2,15 +2,16 @@
 import { GlueModule } from "module-glue-ts";
 
 import template from './template.hbs';
-import styles from './styles.scss';
+import styles from './styles.css';
+
 
 export default class LazyImageMarkupModule extends GlueModule {
     
     name = 'LazyImageMarkupModule';
     
     async render() : Promise<string> {
-        console.log( 'styles', styles );
         await super.render();
-        return template( { styles } );
+        const bg = await import('./bg.jpg');
+        return template( { styles, bg : bg.default } );
     }
 }

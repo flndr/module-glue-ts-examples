@@ -1,0 +1,8 @@
+/* submit-button.css */
+.common { /* font-sizes, padding, border-radius */
+}
+
+.normal {
+    composes : common;
+    composes : primary from "Colors.css";
+}

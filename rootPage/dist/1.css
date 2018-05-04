@@ -1,11 +1,24 @@
-.styles--container--rhXcjGPS {
+/* colors.css */
+
+.Colors--primary--3revjGUY {
+  color: blue;
+}
+
+.Colors--secondary--2xKcQN83 {
+  color: #777;
+}
+
+/* other helper classes... */
+.styles--container--yLhZg_-S {
   background-color: #1e90ff;
   color: #fff;
 }
 
-.red {
-  background-color: darkred;
-  color: #fff;
+.styles--common--1CBuz2bn {
+  font-weight: 700;
+}
+
+.styles--normal--gJuMyQps {
 }
 
 

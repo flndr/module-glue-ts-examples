@@ -1,13 +1,13 @@
 import { start } from './routes';
 import { glue } from './modules';
 //import { SubscribeState } from "router5/core/observable";
-import "./index.scss";
+import "./index.css";
 
 start();
 
 //sayHello( document.getElementById( 'app' ) );
 
-setTimeout( () => glue.start() , 1000);
+setTimeout( () => glue.start() , 2500);
 
 //glue.start();
 //

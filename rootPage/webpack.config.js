@@ -4,12 +4,16 @@ const Visualizer           = require( 'webpack-visualizer-plugin' );
 const CleanWebpackPlugin   = require( 'clean-webpack-plugin' );
 const MiniCssExtractPlugin = require( "mini-css-extract-plugin" );
 const DefinePlugin         = Webpack.DefinePlugin;
+const ProvidePlugin        = Webpack.ProvidePlugin;
 
 const NPM_RUN_BUILD  = 'build';
 const NPM_RUN_DEV    = 'dev';
 const NPM_RUN_SCRIPT = process.env.npm_lifecycle_event || NPM_RUN_DEV;
 
 const IS_DEV = NPM_RUN_SCRIPT === NPM_RUN_BUILD ? false : true;
+
+console.log( 'WEPACK NPM_RUN_SCRIPT', NPM_RUN_SCRIPT );
+console.log( 'WEPACK IS_DEV', IS_DEV );
 
 const config = {
 
@@ -48,12 +52,12 @@ const config = {
                 }
             },
             {
-                test : /\.(png|gif|jpg|jpeg|svg)$/,
+                test : /\.(jpe?g|png|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
                 use  : {
                     loader  : 'url-loader',
                     options : {
                         name  : '[hash].[ext]',
-                        limit : 5 * 1000 // files below 5kB will be included
+                        limit : 10 * 1000 // files below 10kB will be included
                     }
                 }
             },
@@ -94,11 +98,50 @@ const config = {
                         }
                     }
                 ]
+            },
+            {
+                test    : /\.css$/,
+                exclude : [],
+                use     : [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader  : 'css-loader',
+                        options : {
+                            sourceMap      : true,
+                            modules        : true,
+                            importLoaders  : 1,
+                            localIdentName : '[name]--[local]--[hash:base64:8]'
+                        }
+                    },
+                    {
+                        loader  : 'resolve-url-loader',
+                        options : {
+                            keepQuery : true,
+                            sourceMap : true
+                        }
+                    },
+                    {
+                        loader  : 'postcss-loader',
+                        options : {
+                            sourceMap : true
+                        }
+                    }
+                ]
             }
         ]
     },
 
     plugins : [
+//        new ProvidePlugin(
+//            {
+//                // required by bootstrap
+//                'Popper'        : [ 'popper.js', 'default' ],
+//                // required by legacy code + bootstrap
+//                '$'             : 'jquery/dist/jquery',
+//                'jQuery'        : 'jquery/dist/jquery',
+//                'window.jQuery' : 'jquery/dist/jquery'
+//            }
+//        ),
         new DefinePlugin( {
             __DEV__ : JSON.stringify( IS_DEV )
         } ),
