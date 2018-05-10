@@ -1,0 +1,14 @@
+{
+    "booking" : {
+        "basicInformation" : {
+            "origin"      : "MSP",
+            "destination" : "LAS",
+            "startDate"   : "2018-04-10",
+            "endDate"     : "2018-04-17",
+            "travelers"   : { "adults" : 2, "children" : 0, /* ... */ }
+        },
+        "items"            : { }
+    },
+
+    "request" : "SCA_SEARCH"
+}

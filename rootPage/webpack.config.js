@@ -3,8 +3,10 @@ const Webpack              = require( 'webpack' );
 const Visualizer           = require( 'webpack-visualizer-plugin' );
 const CleanWebpackPlugin   = require( 'clean-webpack-plugin' );
 const MiniCssExtractPlugin = require( "mini-css-extract-plugin" );
-const DefinePlugin         = Webpack.DefinePlugin;
-const ProvidePlugin        = Webpack.ProvidePlugin;
+const HtmlWebpackPlugin    = require( 'html-webpack-plugin' );
+
+const DefinePlugin  = Webpack.DefinePlugin;
+const ProvidePlugin = Webpack.ProvidePlugin;
 
 const NPM_RUN_BUILD  = 'build';
 const NPM_RUN_DEV    = 'dev';
@@ -27,8 +29,8 @@ const config = {
 
     output : {
         path          : path.join( __dirname, "dist" ),
-        filename      : "[name].bundle.js",
-        chunkFilename : "[name].chunk.js"
+        filename      : "[name].[hash].bundle.js",
+        chunkFilename : "[name].[hash].chunk.js"
     },
 
     resolve : {
@@ -132,22 +134,16 @@ const config = {
     },
 
     plugins : [
-//        new ProvidePlugin(
-//            {
-//                // required by bootstrap
-//                'Popper'        : [ 'popper.js', 'default' ],
-//                // required by legacy code + bootstrap
-//                '$'             : 'jquery/dist/jquery',
-//                'jQuery'        : 'jquery/dist/jquery',
-//                'window.jQuery' : 'jquery/dist/jquery'
-//            }
-//        ),
         new DefinePlugin( {
             __DEV__ : JSON.stringify( IS_DEV )
         } ),
         new MiniCssExtractPlugin( {
-            filename      : '[name].css',
-            chunkFilename : '[id].css'
+            filename      : '[name].[hash].bundle.css',
+            chunkFilename : '[id].[hash].chunk.css'
+        } ),
+        new HtmlWebpackPlugin( {
+            title    : 'Glue',
+            template : 'src/index.hbs'
         } )
     ],
 
@@ -163,12 +159,12 @@ switch( NPM_RUN_SCRIPT ) {
 
         config.plugins.unshift(
             new CleanWebpackPlugin( [ './dist' ], {
-                exclude : [ 'index.html' ]
+                exclude : []
             } )
         );
 
         config.plugins.push( ... [
-            new Visualizer( { filename : './bundleSizes.html' } )
+            new Visualizer( { filename : 'bundleSizes.html' } )
         ] );
 
         break;

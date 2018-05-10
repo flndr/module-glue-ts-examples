@@ -1,0 +1,34 @@
+{
+    "booking" : {
+        "basicInformation" : {
+            "origin"      : "MSP",
+            "destination" : "LAS",
+            "startDate"   : "2018-04-10",
+            "endDate"     : "2018-04-17",
+            "travelers"   : { "adults" : 2, "children" : 0, /* ... */ }
+        },
+        "items"            : {
+            "SCA_ROUNDTRIP_FLIGHTS" : {
+                "F_01" : { "price" : 231.90, "departureTime" : "07:30", /* ... */ },
+                "F_04" : { "price" : 123.45, "departureTime" : "06:30", /* ... */ },
+            }
+        }
+    },
+
+    "response" : {
+        "for"   : "SCA_ROUNDTRIP_HOTELS",
+        "items" : {
+            "R_01" : { "price" : 231.90, "hotel" : "H_01", "room" : "HR_01", /* ... */ },
+            "R_02" : { "price" : 432.90, "hotel" : "H_02", "room" : "HR_01", /* ... */ },
+            "R_03" : { "price" : 123.45, "hotel" : "H_02", "room" : "HR_02", /* ... */ },
+            "R_04" : { "price" : 123.45, "hotel" : "H_03", "room" : "HR_03", /* ... */ },
+            /* ... */
+        },
+        "meta"  : {
+            "hotels" : [ /* ... */ ],
+            "rooms" : [ /* ... */ ],
+            "rates" : [ /* ... */ ],
+            /* ... */
+        }
+    }
+}
