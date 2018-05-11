@@ -1,0 +1,38 @@
+{
+    "booking" : {
+
+        "basicInformation" : {
+            "origin"      : "MSP",
+            "destination" : "LAS",
+            "startDate"   : "2018-04-10",
+            "endDate"     : "2018-04-17",
+            "travelers"   : { "adults" : 2, "children" : 0, /* ... */ }
+        },
+
+        "items" : { }
+    },
+
+    "response" : {
+        "for"   : "SCA_ROUNDTRIP_FLIGHTS",
+        "items" : {
+            "F_01" : { "price" : 231.90, "departureTime" : "07:30", /* ... */ },
+            "F_02" : { "price" : 432.90, "departureTime" : "09:30", /* ... */ },
+            "F_03" : { "price" : 123.45, "departureTime" : "04:55", /* ... */ },
+            "F_04" : { "price" : 123.45, "departureTime" : "06:30", /* ... */ },
+            /* ... */
+        },
+        "meta"  : {
+            // meta is only for that current step - needed some information in future steps? must be inside item!
+            "airports" : [
+                { "id" : "MSP", "name" : "Minneapolis/St. Paul, MN", /* ... */ },
+                { "id" : "LAS", "name" : "Las Vegas, NV", /* ... */ },
+                /* ... */
+            ],
+            /* ... */
+        }
+    },
+
+    "steps" : {
+
+    }
+}

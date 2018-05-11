@@ -1,0 +1,19 @@
+{
+    "booking" : {
+        "basicInformation" : {
+            "origin"      : "MSP",
+            "destination" : "LAS",
+            "startDate"   : "2018-04-10",
+            "endDate"     : "2018-04-17",
+            "travelers"   : { "adults" : 2, "children" : 0, /* ... */ }
+        },
+        "items"            : {
+            "SCA_ROUNDTRIP_FLIGHTS" : {
+                "F_01" : { "price" : 231.90, "departureTime" : "07:30", /* ... */ },
+                "F_04" : { "price" : 123.45, "departureTime" : "06:30", /* ... */ },
+            }
+        }
+    },
+
+    "request" : "SCA_ROUNDTRIP_HOTELS"
+}

@@ -1,0 +1,9 @@
+
+    onStepEnter:
+    - ajax fetch step content
+    - display / render content
+    - apply default / previous selection
+
+
+    onStepLeave:
+    -
