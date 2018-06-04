@@ -1,0 +1,10 @@
+{
+    "name": "iso-travel/pep-api-service-layer",
+    "authors": [
+        {
+            "name": "TFL",
+            "email": "thomas.flander@isotravel.com"
+        }
+    ],
+    "require": {}
+}
