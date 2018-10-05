@@ -1,0 +1,22 @@
+<div class="{{styles.exampleLoader}}">
+
+    <div data-js-element="examples" class="{{styles.examples}}">
+
+    </div>
+
+    <select data-js-element="exampleSelect">
+        {{#each examples}}
+            <option value="{{this}}">{{this}}</option>
+        {{/each}}
+    </select>
+
+    <button data-js-element="exampleAdd">add</button>
+
+    <div class="{{styles.preloader}}" data-js-element="preloader">
+        <div class="{{styles.spinner}}">
+            <div class="{{styles.spinnerBounce1}}"></div>
+            <div class="{{styles.spinnerBounce2}}"></div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,114 @@
+.exampleLoader {
+    position : relative;
+}
+
+.examples {
+    display         : flex;
+    flex-wrap       : wrap;
+    justify-content : stretch;
+    align-content   : center;
+}
+
+.example {
+    width   : 50%;
+    padding : 24px;
+}
+
+.exampleContainer {
+    box-shadow : 0px 0px 41px -16px rgba(0, 0, 0, 0.75);
+}
+
+.exampleToolbar {
+    color           : grey;
+    font-size       : 12px;
+    line-height     : 12px;
+    display         : flex;
+    flex-wrap       : nowrap;
+    justify-content : space-between;
+    padding         : 3px 3px;
+}
+
+.hide {
+    color           : inherit;
+    text-decoration : none;
+}
+
+.example--orange {
+    background-color : orangered;
+}
+
+.example--blue {
+    background-color : dodgerblue;
+}
+
+.example--green {
+    background-color : greenyellow;
+}
+
+.example--purple {
+    background-color : purple;
+}
+
+.preloader {
+    display          : flex;
+    position         : absolute;
+    width            : 100%;
+    height           : 100%;
+    left             : 0;
+    top              : 0;
+    background-color : white;
+    opacity          : 0.75;
+    transition       : opacity .75s linear;
+    align-items      : center;
+    justify-content  : center;
+}
+
+.preloader.off {
+    opacity : 0;
+    left    : -9999px;
+    top     : -9999px;
+}
+
+.preloader .spinner {
+    width    : 40px;
+    height   : 40px;
+    position : relative;
+    margin   : 100px auto;
+}
+
+.preloader .spinnerBounce1,
+.preloader .spinnerBounce2 {
+    width             : 100%;
+    height            : 100%;
+    border-radius     : 50%;
+    background-color  : gray;
+    opacity           : 0.6;
+    position          : absolute;
+    top               : 0;
+    left              : 0;
+    -webkit-animation : preloaderBounce 2.0s infinite ease-in-out;
+    animation         : preloaderBounce 2.0s infinite ease-in-out;
+}
+
+.preloader .spinnerBounce2 {
+    -webkit-animation-delay : -1.0s;
+    animation-delay         : -1.0s;
+}
+
+@-webkit-keyframes preloaderBounce {
+    0%,
+    100% { -webkit-transform : scale(0.0) }
+    50% { -webkit-transform : scale(1.0) }
+}
+
+@keyframes preloaderBounce {
+    0%,
+    100% {
+        transform         : scale(0.0);
+        -webkit-transform : scale(0.0);
+    }
+    50% {
+        transform         : scale(1.0);
+        -webkit-transform : scale(1.0);
+    }
+}

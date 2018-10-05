@@ -1,13 +1,18 @@
 import { start } from './routes';
-import { glue } from './modules';
+import lazyModules from './lazyModules';
+import glue from './glue';
 //import { SubscribeState } from "router5/core/observable";
 import "./index.css";
 
 start();
 
+Object.keys( lazyModules ).forEach(
+    moduleName => glue.registerLazyModule( moduleName, lazyModules[ moduleName ] )
+);
+
 //sayHello( document.getElementById( 'app' ) );
 
-setTimeout( () => glue.start() , 2500);
+glue.start();
 
 //glue.start();
 //
