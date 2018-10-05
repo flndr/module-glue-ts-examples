@@ -34,13 +34,13 @@ const config = {
     },
 
     resolve : {
-        extensions : [ ".js", ".ts" ]
+        extensions : [ '.ts', '.tsx', '.js', '.jsx' ],
     },
 
     module : {
         rules : [
             {
-                test   : /\.ts$/,
+                test   : /\.ts(x?)$/,
                 loader : [
                     'babel-loader',
                     'ts-loader'
