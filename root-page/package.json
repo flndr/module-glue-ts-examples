@@ -19,6 +19,7 @@
     "license": "ISC",
     "dependencies": {
         "class-transformer": "0.1.9",
+        "mobx": "^5.5.0",
         "module-glue-ts": "0.0.16",
         "router5": "6.6.0",
         "typeface-source-sans-pro": "0.0.54"
