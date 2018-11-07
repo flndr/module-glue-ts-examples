@@ -6,47 +6,67 @@
     display         : flex;
     flex-wrap       : wrap;
     justify-content : stretch;
-    align-content   : center;
+    align-items     : stretch;
+}
+
+.exampleWrapper {
+    width   : 50%;
+    padding : 12px;
 }
 
 .example {
-    width   : 50%;
-    padding : 24px;
+    background-color : #E3E3E6;
+    height           : 100%;
+    padding          : 12px 12px 58px 12px;
+    position         : relative;
+}
+
+.example--new {
+    display         : flex;
+    justify-content : flex-start;
+    align-items     : center;
+    padding         : 24px;
+    flex-wrap       : wrap;
 }
 
 .exampleContainer {
     box-shadow : 0px 0px 41px -16px rgba(0, 0, 0, 0.75);
 }
 
+.moduleName {
+    font-weight : bold;
+}
+
+.moduleId {
+    font-weight : bold;
+}
+
 .exampleToolbar {
-    color           : grey;
-    font-size       : 12px;
-    line-height     : 12px;
     display         : flex;
     flex-wrap       : nowrap;
     justify-content : space-between;
-    padding         : 3px 3px;
+    align-items     : center;
+    font-size       : 14px;
+    line-height     : 16px;
+    height          : 58px;
+    padding         : 12px;
+    overflow        : hidden;
+    position        : absolute;
+    bottom          : 0;
+    left            : 0;
+    width           : 100%;
 }
 
-.hide {
-    color           : inherit;
-    text-decoration : none;
+.customSelect {
+    composes : customSelect from "../../Assets/Styles/Select.css";
 }
 
-.example--orange {
-    background-color : orangered;
+.customSelect__select {
+    composes : customSelect__select from "../../Assets/Styles/Select.css";
 }
 
-.example--blue {
-    background-color : dodgerblue;
-}
-
-.example--green {
-    background-color : greenyellow;
-}
-
-.example--purple {
-    background-color : purple;
+.button {
+    composes : defaultButton from "../../Assets/Styles/Buttons.css";
 }
 
 .preloader {

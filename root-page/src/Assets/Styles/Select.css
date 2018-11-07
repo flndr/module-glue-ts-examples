@@ -1,0 +1,68 @@
+
+.customSelect__select {
+    font-size : inherit; /* inherit size from .customSelect */
+    padding   : .5em; /* add some space*/
+    margin    : 0; /* remove default margins */
+}
+
+.customSelect {
+    position       : relative;
+    display        : inline-block;
+    vertical-align : middle;
+}
+
+.customSelect__select {
+    -webkit-appearance : none;
+    -moz-appearance    : none;
+    appearance         : none;
+    composes           : defaultButton from "./Buttons.css";
+    padding-right      : 2.5em !important; /* accommodate with the pseudo elements for the dropdown arrow */
+}
+
+.customSelect::before,
+.customSelect::after {
+    content        : "";
+    position       : absolute;
+    pointer-events : none;
+}
+
+.customSelect::after { /*  Custom dropdown arrow */
+    content     : "\25BC";
+    height      : 1em;
+    font-size   : .625em;
+    line-height : 1;
+    right       : 1.2em;
+    top         : 55%; /* normally 50%, but visual effect of the triangle*/
+    margin-top  : -.5em;
+}
+
+.customSelect::before { /*  Custom dropdown arrow cover */
+    width         : 2em;
+    right         : 0; top : 0; bottom : 0;
+    border-radius : 0 3px 3px 0;
+}
+
+.customSelect__select[disabled] {
+    color : rgba(0, 0, 0, .3);
+}
+
+.customSelect.customSelect--disabled::after {
+    color : rgba(0, 0, 0, .1);
+}
+
+/* White dropdown style */
+.customSelect--white::before {
+    background-color : #FFFFFF;
+    border-left      : 1px solid rgba(0, 0, 0, .1);
+}
+
+.customSelect--white::after {
+    color : rgba(0, 0, 0, .9);
+}
+
+/* FF only temp fix */
+@-moz-document url-prefix() {
+    .customSelect__select { padding-right : .9em }
+    .customSelect--large .customSelect__select { padding-right : 1.3em }
+    .customSelect--small .customSelect__select { padding-right : .5em }
+}

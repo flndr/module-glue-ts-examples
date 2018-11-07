@@ -1,16 +1,25 @@
 <div class="{{styles.exampleLoader}}">
 
-    <div data-js-element="examples" class="{{styles.examples}}">
+    <div class="{{styles.examples}} wtf">
+
+        <div data-js-element="exampleNew" class="{{styles.exampleWrapper}}">
+            <div class="{{styles.example}} {{styles.example--new}}">
+
+                <span class="{{styles.customSelect}}">
+                    <select class="{{styles.customSelect__select}}" data-js-element="exampleSelect">
+                        {{#each examples}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </span>
+
+                <button class="{{styles.button}}" data-js-element="exampleAdd">Add</button>
+            </div>
+
+        </div>
 
     </div>
 
-    <select data-js-element="exampleSelect">
-        {{#each examples}}
-            <option value="{{this}}">{{this}}</option>
-        {{/each}}
-    </select>
-
-    <button data-js-element="exampleAdd">add</button>
 
     <div class="{{styles.preloader}}" data-js-element="preloader">
         <div class="{{styles.spinner}}">

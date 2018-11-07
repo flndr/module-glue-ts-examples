@@ -1,8 +1,10 @@
 import { GlueModule } from 'module-glue-ts';
 
-import template from './ExampleLoader.hbs';
+import moduleTemplate from './ExampleLoader.hbs';
+import exampleTemplate from './ExampleContainer.hbs';
 import styles from './ExampleLoader.css';
 import lazyModules from '../../lazyModules';
+
 
 export default class ExampleLoader extends GlueModule {
     
@@ -10,22 +12,11 @@ export default class ExampleLoader extends GlueModule {
     
     exampleSelect : HTMLSelectElement;
     exampleAdd : HTMLButtonElement;
-    examples : HTMLDivElement;
+    exampleNew : HTMLDivElement;
     preloader : HTMLDivElement;
     
-    constructor() {
-        super();
-        this.removeExample     = this.removeExample.bind( this );
-        this.onExampleAddClick = this.onExampleAddClick.bind( this );
-    }
-    
-    updateExamples() {
-        const examples = Array.from( this.element.querySelectorAll( '.' + styles.example ) );
-        console.log( examples );
-    }
-    
     async render() : Promise<string> {
-        return template( {
+        return moduleTemplate( {
             styles,
             examples : Object.keys( lazyModules )
         } );
@@ -33,53 +24,58 @@ export default class ExampleLoader extends GlueModule {
     
     async afterMount() {
         this.preloader     = this.element.querySelector( '[data-js-element="preloader"]' );
-        this.examples      = this.element.querySelector( '[data-js-element="examples"]' );
+        this.exampleNew    = this.element.querySelector( '[data-js-element="exampleNew"]' );
         this.exampleSelect = this.element.querySelector( '[data-js-element="exampleSelect"]' );
         this.exampleAdd    = this.element.querySelector( '[data-js-element="exampleAdd"]' );
-        
-        this.exampleAdd.addEventListener( 'click', this.onExampleAddClick );
+    
+        this.exampleAdd.addEventListener( 'click', this.addNewExample.bind( this ) );
         
         this.hideLoader();
     }
     
-    async onExampleAddClick( e : Event ) {
+    async addNewExample( e : Event ) {
         e.preventDefault();
         
         this.showLoader();
         
-        this.examples.insertAdjacentHTML( 'beforeend', `
-            <div class="${styles.example}">
-                <div class="${styles.exampleContainer}" ${this.config.ATTR_MODULE_NAME}="${this.exampleSelect.value}"></div>
-                <div class="${styles.exampleToolbar}">
-                    <span>Example: ${this.config.ATTR_MODULE_NAME}</span>
-                    <a href="#" class="${styles.hide}">unload</a>
-                </div>
-            </div>` );
+        const newExample = this.addNewExampleDomNode();
         
-        Array.from( this.examples.querySelectorAll( 'a.' + styles.hide ) ).forEach( a => {
-            a.removeEventListener( 'click', this.removeExample );
-            a.addEventListener( 'click', this.removeExample );
-        } );
+        await this.glue.start( newExample );
         
-        await this.glue.start( this.element );
+        const removeButton = newExample.querySelector( '[data-js-element="removeButton"]' );
+        const container    = newExample.querySelector( '[data-js-element="exampleContainer"]' );
+        const moduleId     = newExample.querySelector( '[data-js-element="moduleId"]' );
+        moduleId.innerHTML = container.getAttribute( this.glue.CONFIG.ATTR_MODULE_ID );
+        removeButton.addEventListener( 'click', this.removeExample.bind( this, newExample ) );
         
         this.hideLoader();
     }
     
-    async removeExample( e : Event ) {
+    async removeExample( example : Element, e : Event ) {
         e.preventDefault();
-        const a       = e.currentTarget as Element;
-        const example = a.parentElement.parentElement;
         await this.glue.stop( example );
         example.remove();
     }
     
-    showLoader() {
+    private showLoader() {
         this.preloader.classList.remove( styles.off );
     }
     
-    hideLoader() {
+    private hideLoader() {
         this.preloader.classList.add( styles.off );
+    }
+    
+    private addNewExampleDomNode() {
+        const newExample = document.createElement( "div" );
+        newExample.classList.add( styles.exampleWrapper );
+        
+        newExample.insertAdjacentHTML( 'beforeend', exampleTemplate( {
+            moduleName     : this.exampleSelect.value,
+            moduleNameAttr : this.config.ATTR_MODULE_NAME,
+            styles
+        } ) );
+        
+        return this.exampleNew.parentNode.insertBefore( newExample, this.exampleNew );
     }
     
 }

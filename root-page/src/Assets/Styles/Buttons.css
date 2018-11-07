@@ -4,5 +4,22 @@
 
 .normal {
     composes : common;
-    composes : primary from "Colors.css";
+    composes : primary from "./Colors.css";
+}
+
+.defaultButton {
+    cursor           : pointer;
+    border           : 2px solid #4f555a;
+    color            : #303539;
+    background-color : transparent;
+    padding          : 4px 8px;
+    font-size        : 14px;
+    line-height      : 20px;
+    font-weight      : bold;
+    border-radius    : 0;
+}
+
+.defaultButton:hover {
+    border-color : #262a2d;
+    color        : #101214;
 }

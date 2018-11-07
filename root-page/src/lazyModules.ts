@@ -1,5 +1,7 @@
 const lazyModules : { [ key : string ] : () => Promise<any> } = {
-    'LazyImageMarkupModule' : () => import('./Modules/LazyImageMarkupModule/module')
+    //'PrebuildReactModule'   : () => import('../../prebuild-react-module/build/static/js/main.05e03af1'),
+    'LazyImageMarkupModule' : () => import('./Modules/LazyImageMarkupModule/module'),
+    'HelloWorldModule'      : () => import('./Modules/HelloWorldModule/module')
 };
 
 export default lazyModules;
