@@ -1,0 +1,4 @@
+
+.button {
+    composes : defaultButton from "../../Assets/Styles/Buttons.css";
+}

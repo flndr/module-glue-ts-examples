@@ -10,11 +10,39 @@
 
 }
 
-body {
+body, input, textarea {
     color       : #1B1E21;
     font-size   : 18px;
     line-height : 24px;
 }
+
+input {
+    border           : 2px solid #4F555A;
+    color            : #303539;
+    background-color : transparent;
+    padding          : 4px 8px;
+    font-size        : 14px;
+    line-height      : 20px;
+    font-weight      : bold;
+    border-radius    : 0;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color : #4F555A;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    color : #4F555A;
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+    color : #4F555A;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color : #4F555A;
+}
+
 
 h1 {
     color       : #1B1E21;
