@@ -1,18 +1,22 @@
-import { start } from './routes';
-import lazyModules from './lazyModules';
-import glue from './glue';
-//import { SubscribeState } from "router5/core/observable";
+import { Glue } from 'module-glue-ts';
+
 import "./index.css";
+import ExampleLoader from './Modules/ExampleLoader/ExampleLoader';
+import examples from './Modules/ExampleLoader/Examples/examples';
 
-start();
+const glue = new Glue();
 
-Object.keys( lazyModules ).forEach(
-    moduleName => glue.registerLazyModule( moduleName, lazyModules[ moduleName ] )
+console.log( 'glue', { ... glue } );
+
+glue.registerModule( 'ExampleLoader', ExampleLoader );
+
+Object.keys( examples ).forEach(
+    moduleName => glue.registerLazyModule( moduleName, examples[ moduleName ] )
 );
 
-//sayHello( document.getElementById( 'app' ) );
-
-glue.start();
+console.log( 'glue starting...' )
+glue.start().then( () =>
+    console.log( '... done' ) );
 
 //glue.start();
 //

@@ -1,31 +1,36 @@
-<div class="{{styles.exampleLoader}}">
+<div class="{{styles.wrapper}}">
 
-    <div class="{{styles.examples}} wtf">
+    <h2  class="{{styles.headline}}">Module Glue Examples</h2>
 
-        <div data-js-element="exampleNew" class="{{styles.exampleWrapper}}">
-            <div class="{{styles.example}} {{styles.example--new}}">
+    <div class="{{styles.exampleLoader}}">
 
-                <span class="{{styles.customSelect}}">
-                    <select class="{{styles.customSelect__select}}" data-js-element="exampleSelect">
+        <div class="{{styles.examples}}">
+
+            <div data-js-element="exampleNew" class="{{styles.exampleWrapper}}">
+                <div class="{{styles.example}} {{styles.example--new}}">
+
+                <span>
+                    <select class="form-select" data-js-element="exampleSelect">
                         {{#each examples}}
                             <option value="{{this}}">{{this}}</option>
                         {{/each}}
                     </select>
                 </span>
 
-                <button class="{{styles.button}}" data-js-element="exampleAdd">Add</button>
+                    <button class="btn" data-js-element="exampleAdd">Add</button>
+                </div>
+
             </div>
 
+
+        </div>
+
+        <div class="{{styles.preloader}}" data-js-element="preloader">
+            <div class="{{styles.spinner}}">
+                <div class="{{styles.spinnerBounce1}}"></div>
+                <div class="{{styles.spinnerBounce2}}"></div>
+            </div>
         </div>
 
     </div>
-
-
-    <div class="{{styles.preloader}}" data-js-element="preloader">
-        <div class="{{styles.spinner}}">
-            <div class="{{styles.spinnerBounce1}}"></div>
-            <div class="{{styles.spinnerBounce2}}"></div>
-        </div>
-    </div>
-
 </div>

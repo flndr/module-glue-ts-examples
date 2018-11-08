@@ -1,5 +1,4 @@
 import { GlueModule, load } from 'module-glue-ts';
-import styles from './styles.css';
 
 declare var $ : any; // dont want to deal with types here, just a dumb example
 
@@ -20,8 +19,8 @@ export default class JqueryModule extends GlueModule {
                 This module loaded jQuery and a datepicker from external sources.
                 <span data-glue="value">You can use it now:</span>
             <div>
-            <input data-glue="datepicker" placeholder="Select date" />
-            <button data-glue="button" class="${styles.button}">Set</button>
+            <input data-glue="datepicker" placeholder="Select date" class="form-input" />
+            <button data-glue="button" class="btn">Set</button>
         `;
     }
     

@@ -1,4 +1,4 @@
-import { GlueModule } from "module-glue-ts";
+import {GlueModule } from 'module-glue-ts';
 
 import template from './ModuleLoaderModule.hbs';
 import styles from './ModuleLoaderModule.css';

@@ -5,6 +5,6 @@ export default class HelloWorldModule extends GlueModule {
     name = 'HelloWorldModule';
     
     async render() {
-        return 'Hello. World.';
+        return '<h4>Hello. World.</h4>';
     }
 }
